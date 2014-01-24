@@ -19,7 +19,7 @@ app.get('/', function(req, res) {
 
 app.get('/test', function(req, res){
 	dogecoin.getbalance('DLVhazsZNfZX3qAJ9wRfcKSqCwFnuQFCDt', function(err, result){
-		res.send(result);
+		res.send({ success : result, error : err});
 	});
 
 });
