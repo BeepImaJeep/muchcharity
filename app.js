@@ -4,6 +4,8 @@ app.engine('html', require('ejs').renderFile);
 app.use(express.static(__dirname + '/public'));
 
 
+var http = require('http');
+
 var dogecoin = require('node-dogecoin')()
 
 
@@ -23,6 +25,26 @@ app.get('/test', function(req, res){
 	});
 
 });
+
+app.get('/test2', function(req,res){
+
+
+	var options = {
+	  host: 'http://dogechain.info',
+	  path: '/chain/Dogecoin/q/addressbalance/DLVhazsZNfZX3qAJ9wRfcKSqCwFnuQFCDt'
+	};
+
+	http.get(options, function(resp){
+	  resp.on('data', function(chunk){
+	    res.send(chunk);
+	  });
+	}).on("error", function(e){
+	  res.send("Got error: " + e.message);
+	});
+
+
+
+})
 
 var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {
