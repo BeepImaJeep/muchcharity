@@ -34,7 +34,7 @@ app.get('/test2', function(req,res){
 	  path: '/chain/Dogecoin/q/addressbalance/DLVhazsZNfZX3qAJ9wRfcKSqCwFnuQFCDt'
 	};
 
-	http.get(options, function(resp){
+	http.get("http://dogechain.info/chain/Dogecoin/q/addressbalance/DLVhazsZNfZX3qAJ9wRfcKSqCwFnuQFCDt", function(resp){
 	  resp.on('data', function(chunk){
 	    res.send(chunk);
 	  });
