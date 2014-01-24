@@ -1,13 +1,52 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css" />
+
+
+
+
+	<script>
+	var util = {
+		//args = {url, type, data, success, error}
+		ajax : function(args){
+			var req = new XMLHttpRequest();
+			req.open(args.type || "GET" , args.url, true);
+			req.onreadystatechange = function(){
+				if(req.readyState != 4) return;
+				if(req.status != 200)
+					return args.error && args.error(req.responseText);
+				return args.success && args.success(req.responseText);
+			};
+			req.send(args.data);
+			return req;
+		}
+	};
+
+
+
+	</script>
 </head>
 <body>
 
 	<title>Much Charity</title>
 
 	<div id='content'>
-		TEST
+		So much charity
+		<div> Current balance at address DLVhazsZNfZX3qAJ9wRfcKSqCwFnuQFCDt = <span id='balance'></span> DOGE</div>
 	</div>
 </body>
+<script>
+
+	$.ajax({
+		type: 'GET',
+		dataType: 'jsonp',
+		url : "http://dogechain.info/chain/Dogecoin/q/addressbalance/DLVhazsZNfZX3qAJ9wRfcKSqCwFnuQFCDt",
+		success : function(result){
+			//document.getElementById('balance').innerHTML = result;
+			console.log(result);
+		}
+	});
+
+
+</script>
 </html>
