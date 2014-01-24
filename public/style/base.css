@@ -1,0 +1,61 @@
+body{
+	font-family : 'Lato', sans-serif;
+}
+
+
+h1{
+	font-size: 2em;
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+
+h2{
+	font-size: 1.5em;
+	font-weight: 900;
+	margin-bottom: 15px;
+	margin-top: 10px;
+}
+
+h3{
+	font-size: 1em;
+	font-weight: 900;
+	margin-top: 5px;
+	margin-bottom: 7px;
+}
+
+p{
+	margin-bottom: 1em;
+	line-height: 1.5em;
+	font-size: 16px;
+}
+
+a{
+	color : inherit;
+}
+
+a:hover{
+	font-weight: bold;
+}
+
+strong{
+	font-weight: bold;
+}
+
+
+
+.content{
+	width : 960px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+
+
+
+
+
+
+
+
+

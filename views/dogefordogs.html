@@ -1,0 +1,247 @@
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+
+
+	<!-- Local -->
+	<link href='../libs/lato/lato.css' rel='stylesheet' type='text/css'>
+	<link href='../libs/chunk/chunk.css' rel='stylesheet' type='text/css'>
+	<link href='../libs/font-awesome/css/font-awesome.css' rel='stylesheet' type='text/css'>
+
+
+
+	<!-- Style -->
+	<link rel="stylesheet" type="text/css" href="../style/reset.css" />
+	<link rel="stylesheet" type="text/css" href="../style/base.css" />
+	<link rel="stylesheet" type="text/css" href="../style/dogefordogs.css" />
+
+
+
+
+	<script>
+	var util = {
+		//args = {url, type, data, success, error}
+		ajax : function(args){
+			var req = new XMLHttpRequest();
+			req.open(args.type || "GET" , args.url, true);
+			req.onreadystatechange = function(){
+				if(req.readyState != 4) return;
+				if(req.status != 200)
+					return args.error && args.error(req.responseText);
+				return args.success && args.success(req.responseText);
+			};
+			req.send(args.data);
+			return req;
+		}
+	};
+
+
+
+	</script>
+</head>
+<body>
+	<title>Doge For Dogs</title>
+
+
+
+
+	<div class='top'>
+			<div class='top__content'>
+
+				<!-- <img src='../../assets/dogecoin.jpg'></img> -->
+				<div class='top__header'>Doge for Dogs</div>
+				<div class='top__description'>Cancer is a disease that touches many of us, that is why Morris Animal Foundation is dedicated to finding a cure. An estimated 50 percent of all dogs will battle cancer. It is the No. 1 cause of death in dogs over the age of 2.</div>
+
+				<div class='top__promote'>
+					An Initiative of <a href=''>Much Charity</a>
+				</div>
+
+
+
+
+		</div>
+	</div>
+	<div class='menu'>
+		<div class='content'>
+			<div class='menu__item'>About</div>
+			<div class='menu__item'>About</div>
+			<div class='menu__item'>About</div>
+			<div class='menu__item'>About</div>
+		</div>
+	</div>
+
+
+	<div class='section'>
+		<div class='content'>
+			<h3>Donate</h3>
+			<p>Please give to this cause</p>
+			<p>We've raised <span id='amount'></span> DOGE (about $<span id='usd'></span> USD), <span id='goal'></span>% to our goal!</p>
+			<div style='font-size:1.3em'>Donation Address : <i>DLVhazsZNfZX3qAJ9wRfcKSqCwFnuQFCDt </i></div>
+		</div>
+	</div>
+
+	<div class='section grey'>
+		<div class='content'>
+			<h3></h3>
+			<p> Section Content </p>
+			<p> Section Content </p>
+		</div>
+
+	</div>
+
+	<div class='section drkgrey'>
+		<div class='content'>
+			<h3>K9 Cancer Walk</h3>
+			<p>Cancer is a disease that touches many of us, that is why Morris Animal Foundation is dedicated to finding a cure. An estimated 50 percent of all dogs will battle cancer. It is the No. 1 cause of death in dogs over the age of 2.</p>
+			<p>All dog lovers are invited to walk with their dogs to celebrate the life of their canine best friend or to walk in memory of dogs that have lost their battle with canine cancer. We will have an expo area of dog related vendors and a celebration after the walk. Sign up today and help create a healthier tomorrow for dogs everywhere! </p>
+		</div>
+
+	</div>
+
+	<div class='section'>
+		<div class='content'>
+			<h3>Section Header</h3>
+			<p> Section Content </p>
+		</div>
+
+	</div>
+
+
+	<div class='section'>
+		<div class='content'>
+			<h3>Section Header</h3>
+			<p> Section Content </p>
+		</div>
+
+	</div>
+
+
+	<div class='section'>
+		<div class='content'>
+			<h3>Section Header</h3>
+			<p> Section Content </p>
+		</div>
+
+	</div>
+
+
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class='footer'>
+		<div class='content'>
+			<div class='footer__about'>
+				<h3>About</h3>
+				<p>
+					This page was developed by Much Charity.
+				</p>
+				<p>
+					More filler Text
+				</p>
+				<p class='footer__about__icons'>
+					<a target='_blank' href=''><i class='icon-home'></i></a>
+					<a target='_blank' href=''><i class='icon-envelope'></i></a>
+					<a target='_blank' href=''><i class='icon-pencil'></i></a>
+					<a target='_blank' href=''><i class='icon-twitter'></i></a>
+				</p>
+			</div>
+
+			<div class='footer__license'>
+				<h2>What is Much Charity</h2>
+				<p>
+					Much Charity's goal is to use internet meme's and cryptocurrencies to bring recogniztion to much deserved casuses.
+				</p>
+				<p>
+					More filler text
+				</p>
+			</div>
+		</div>
+	</div>
+
+
+
+	</div>
+
+
+
+</body>
+<script>
+
+	Number.prototype.round = function(digits) {
+		var digits = digits || 0;
+		if(digits === 0){return Math.round(this);}
+		return Math.round(this * Math.pow(10,digits)) / Math.pow(10,digits);
+	};
+
+	Number.prototype.addCommas = function(number){
+		number = number || ("" + this);
+		return number.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+	};
+
+	Number.prototype.formatMoney = function(){
+		return this.addCommas(this.round(2).toFixed(2));
+	};
+
+
+	var doge_usd = 0.00175792;
+	var goal = 70000;
+
+	util.ajax({
+		type: 'GET',
+		url : "/getbalance/DLVhazsZNfZX3qAJ9wRfcKSqCwFnuQFCDt",
+		success : function(result){
+			$('#amount').text((result*1).formatMoney());
+			$('#usd').text((result * doge_usd).formatMoney());
+			$('#goal').text((result / goal * 100).formatMoney());
+		}
+	});
+
+
+
+
+	jQuery.fn.sticky = function(topOverride){
+		var element = this;
+		var oldTop = topOverride || element.offset().top;
+
+		jQuery(window).scroll(function() {
+			if(element.hasScrolledPast()) {
+				element.css({
+					'position':'fixed',
+					'top'     :'0px'})
+					.addClass('stuck');
+			}
+			if(oldTop > element.offset().top){
+				element.css({
+					'position':'static'})
+					.removeClass('stuck');
+			}
+		});
+		//element.parent().css('position', 'relative');
+		return this;
+	};
+
+	jQuery.fn.hasScrolledPast = function(){
+		return this.offset().top <= jQuery(window).scrollTop();
+	}
+
+	jQuery.fn.scrollTo = function(duration){
+		duration = duration || 800;
+		$('html, body').animate({scrollTop: $(this).offset().top}, duration);
+	};
+
+
+
+	$('.menu').sticky();
+
+
+</script>
+</html>

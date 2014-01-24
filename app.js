@@ -6,44 +6,22 @@ app.use(express.static(__dirname + '/public'));
 
 var http = require('http');
 
-var dogecoin = require('node-dogecoin')()
-
-
-var test = dogecoin.getbalance('DLVhazsZNfZX3qAJ9wRfcKSqCwFnuQFCDt', function(err, result){
-	console.log(err, result);
-});
-
-console.log(test);
-
 app.get('/', function(req, res) {
-	res.render('../index.html');
+	res.render('muchcharity.html');
 });
 
-app.get('/test', function(req, res){
-	dogecoin.getbalance('DLVhazsZNfZX3qAJ9wRfcKSqCwFnuQFCDt', function(err, result){
-		res.send({ success : result, error : err});
-	});
-
+app.get('/dog', function(req, res){
+	res.render('dogefordogs.html');
 });
 
-app.get('/test2', function(req,res){
-
-
-	var options = {
-	  host: 'http://dogechain.info',
-	  path: '/chain/Dogecoin/q/addressbalance/DLVhazsZNfZX3qAJ9wRfcKSqCwFnuQFCDt'
-	};
-
-	http.get("http://dogechain.info/chain/Dogecoin/q/addressbalance/DLVhazsZNfZX3qAJ9wRfcKSqCwFnuQFCDt", function(resp){
-	  resp.on('data', function(chunk){
-	    res.send(chunk);
-	  });
+app.get('/getbalance/:addr', function(req,res){
+	http.get("http://dogechain.info/chain/Dogecoin/q/addressbalance/"+req.params.addr, function(resp){
+		resp.on('data', function(chunk){
+			res.send(200, chunk);
+		});
 	}).on("error", function(e){
-	  res.send("Got error: " + e.message);
+		res.send(500, e.message);
 	});
-
-
-
 })
 
 var port = Number(process.env.PORT || 5000);
