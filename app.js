@@ -7,10 +7,11 @@ app.use(express.static(__dirname + '/public'));
 var http = require('http');
 
 app.get('/', function(req, res) {
-	res.render('muchcharity.html');
+	//res.render('muchcharity.html');
+	res.redirect('/dogefordogs');
 });
 
-app.get('/dog', function(req, res){
+app.get('/dogefordogs', function(req, res){
 	res.render('dogefordogs.html');
 });
 
