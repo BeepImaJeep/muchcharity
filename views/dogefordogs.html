@@ -6,6 +6,7 @@
 	<!-- Local -->
 	<link href='../libs/lato/lato.css' rel='stylesheet' type='text/css'>
 	<link href='../libs/chunk/chunk.css' rel='stylesheet' type='text/css'>
+	<link href='../libs/impact/impact.css' rel='stylesheet' type='text/css'>
 	<link href='../libs/font-awesome/css/font-awesome.css' rel='stylesheet' type='text/css'>
 
 
@@ -44,23 +45,28 @@
 
 
 
-
+<!--
 	<div class='top'>
 			<div class='top__content'>
-
-				<!-- <img src='../../assets/dogecoin.jpg'></img> -->
 				<div class='top__header'>Doge for Dogs</div>
 				<div class='top__description'>Cancer is a disease that touches many of us, that is why Morris Animal Foundation is dedicated to finding a cure. An estimated 50 percent of all dogs will battle cancer. It is the No. 1 cause of death in dogs over the age of 2.</div>
 
 				<div class='top__promote'>
 					An Initiative of <a href=''>Much Charity</a>
 				</div>
-
 		</div>
-
 	</div>
+-->
+	<div class='banner'>
+		<div class='content'>
+			Much <span class='orange'>Charity</span> <img style='height:35px;vertical-align:middle' src="../assets/muchcharity3.png"></img> Memes Helping Memes
+		</div>
+	</div>
+
+
 	<div class='menu'>
 		<div class='content'>
+			<span style="line-height:40px">The World's Most Interesting Doge Cancer Charity</span>
 			<div class='menu__item' data-section='donate'>Donate</div>
 			<div class='menu__item' data-section='questions'>Questions</div>
 			<div class='menu__item' data-section='cause'>The Cause</div>
@@ -69,6 +75,43 @@
 	</div>
 
 
+	<div class='section'>
+		<div class='content'>
+			<img src="../assets/large_doge.png" style='float:right;height:255px'></img>
+			<div style='width:50%;text-align:center;font-size:1.2em;padding-top: 25px;padding-bottom: 25px;'>
+				<div style='font-size:2em;margin-bottom:10px;'>Let's help</div>
+				<div style='margin-bottom:20px;'><a href="http://abcnews.go.com/Entertainment/wireStory/worlds-interesting-man-aids-dog-cancer-fight-21596721">The World'd Most Interesting Man</a> raise money for dog cancer.</div>
+
+				<div style='font-size:2em;margin-bottom:10px;'>100%</div>
+				<div style='margin-bottom:20px;'>of the proceeds will go to the <a href="http://www.morrisanimalfoundation.org/">Morris Animal Foundation.</a></div>
+
+
+			</div>
+
+		</div>
+	</div>
+
+	<div id="donate" class='section grey' style='text-align:center'>
+		<div class='content'>
+
+			<div class='black_title'>Use DogeCoins to Save DogeLives</div>
+
+			<img style='height:200px;margin-right:10px;' src="../assets/dogecoin.png"></img><img style='height:200px;' src="../assets/2s.png"></img>
+
+			<div style="margin-top:30px;margin-bottom:20px;"> <span style='font-family:"impact"'>Total Donated</span> : <span class='amount'></span> DOGE</div>
+
+			<div class='meterContainer'>
+				<div class='meter'>
+					<div class='bar percent'></div>
+				</div>
+				<div style='display:inline-block;vertical-align: middle;'><b><div class='goal'></div></b> (To the moon!)</div>
+
+			</div>
+			<div style='font-size:1.3em'>Donation Address : <i>DLVhazsZNfZX3qAJ9wRfcKSqCwFnuQFCDt </i></div>
+		</div>
+	</div>
+
+<!--
 
 	<div id="donate" class='section'>
 		<div class='content'>
@@ -89,6 +132,27 @@
 		</div>
 	</div>
 
+-->
+
+	<div id="questions" class='section drkgrey'>
+		<div class='content'>
+			<h3>Such Questions</h3>
+			<h4>Why start this up?</h4>
+			<p>I loved the charity initiatives in the community. Since I'm passionate about cryptocurrencies, I thought <i><b>"Why not match meme charities with meme currencies"</i></b> -Much simplicity.</p>
+
+			<h4>Who has control of the wallet?</h4>
+			<p>We’ve been working tirelessly for the past few days, and wanted to get this initial campaign running before the event. I'll be managing the wallet, but in the future, I'll have meme charities control the funds.</p>
+			<h4>Why raise 40k?</h4>
+			<p>The K9 Dog Walk is hoping to raise 40k for dog cancer by January 26th. They are already half way there. If we can get to 20k, that would be awesome, but let's shoot for the moon! Donation period ends January 27th at 11:59pm.</p>
+			<h4>What if I have some additional questions?</h4>
+			<p>You can reach us at info@muchcharity.com. Bio and personal contact details are available at the bottom of the page. The charity event can be found <a href="http://support.morrisanimalfoundation.org/site/TR?fr_id=1380&pg=entry#.UuL-BBD8XDf">here</a></p>
+		</div>
+
+	</div>
+
+
+<!--
+
 	<div id="questions" class='section grey'>
 		<div class='content'>
 			<h3>Such Questions</h3>
@@ -103,8 +167,8 @@
 		</div>
 
 	</div>
-
-	<div id='cause' class='section drkgrey'>
+-->
+	<div id='cause' class='section grey'>
 		<div class='content'>
 			<h3>K9 Cancer Walk</h3>
 			<p>Cancer is a disease that touches many of us, that is why Morris Animal Foundation is dedicated to finding a cure. An estimated 50 percent of all dogs will battle cancer. It is the No. 1 cause of death in dogs over the age of 2.</p>
@@ -112,7 +176,6 @@
 		</div>
 
 	</div>
-
 	<div id='about_us' class='section'>
 		<div class='content'>
 			<h3>About Us</h3>
@@ -187,6 +250,7 @@
 			$('.goal').text(goal.formatMoney());
 			var percentage = ((result*1) /goal*100);
 			if(percentage > 100) percentage = 100;
+			$('.percent').text(percentage.round(2) + "%");
 			$('.bar').width(percentage + '%');
 		}
 	});
